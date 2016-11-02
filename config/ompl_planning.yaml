@@ -20,7 +20,7 @@ planner_configs:
   KPIECEkConfigDefault:
     type: geometric::KPIECE
     range: 0.0  # Max motion added to tree. ==> maxDistance_ default: 0.0, if 0.0, set on setup()
-    goal_bias: 0.05  # When close to goal select goal, with this probability. default: 0.05
+    goal_bias: 0.05  # When close to goal select goal, with this probability. default: 0.05 
     border_fraction: 0.9  # Fraction of time focused on boarder default: 0.9 (0.0,1.]
     failed_expansion_score_factor: 0.5  # When extending motion fails, scale score by factor. default: 0.5
     min_valid_path_fraction: 0.5  # Accept partially valid moves above fraction. default: 0.5
@@ -44,7 +44,7 @@ planner_configs:
     temp_change_factor: 2.0  # how much to increase or decrease temp. default: 2.0
     min_temperature: 10e-10  # lower limit of temp change. default: 10e-10
     init_temperature: 10e-6  # initial temperature. default: 10e-6
-    frountier_threshold: 0.0  # dist new state to nearest neighbor to disqualify as frontier. default: 0.0 set in setup()
+    frountier_threshold: 0.0  # dist new state to nearest neighbor to disqualify as frontier. default: 0.0 set in setup() 
     frountierNodeRatio: 0.1  # 1/10, or 1 nonfrontier for every 10 frontier. default: 0.1
     k_constant: 0.0  # value used to normalize expresssion. default: 0.0 set in setup()
   PRMkConfigDefault:
@@ -78,6 +78,7 @@ left_arm:
     - TRRTkConfigDefault
     - PRMkConfigDefault
     - PRMstarkConfigDefault
+  projection_evaluator: joints(l_shoulder_pan_joint,l_shoulder_lift_joint)
   longest_valid_segment_fraction: 0.005
 left_arm_and_torso:
   planner_configs:
@@ -92,6 +93,7 @@ left_arm_and_torso:
     - TRRTkConfigDefault
     - PRMkConfigDefault
     - PRMstarkConfigDefault
+  projection_evaluator: joints(torso_lift_joint,l_shoulder_pan_joint)
   longest_valid_segment_fraction: 0.005
 right_arm:
   planner_configs:
@@ -106,6 +108,7 @@ right_arm:
     - TRRTkConfigDefault
     - PRMkConfigDefault
     - PRMstarkConfigDefault
+  projection_evaluator: joints(r_shoulder_pan_joint,r_shoulder_lift_joint)
   longest_valid_segment_fraction: 0.005
 right_arm_and_torso:
   planner_configs:
@@ -120,6 +123,7 @@ right_arm_and_torso:
     - TRRTkConfigDefault
     - PRMkConfigDefault
     - PRMstarkConfigDefault
+  projection_evaluator: joints(torso_lift_joint,r_shoulder_pan_joint)
   longest_valid_segment_fraction: 0.005
 arms:
   planner_configs:
@@ -134,6 +138,7 @@ arms:
     - TRRTkConfigDefault
     - PRMkConfigDefault
     - PRMstarkConfigDefault
+  projection_evaluator: joints(l_shoulder_pan_joint,l_shoulder_lift_joint)
   longest_valid_segment_fraction: 0.005
 head:
   planner_configs:
@@ -148,6 +153,7 @@ head:
     - TRRTkConfigDefault
     - PRMkConfigDefault
     - PRMstarkConfigDefault
+  projection_evaluator: joints(head_pan_joint,head_tilt_joint)
   longest_valid_segment_fraction: 0.005
 torso:
   planner_configs:
@@ -175,6 +181,7 @@ arms_and_torso:
     - TRRTkConfigDefault
     - PRMkConfigDefault
     - PRMstarkConfigDefault
+  projection_evaluator: joints(torso_lift_joint,l_shoulder_pan_joint)
   longest_valid_segment_fraction: 0.005
 whole_body:
   planner_configs:
